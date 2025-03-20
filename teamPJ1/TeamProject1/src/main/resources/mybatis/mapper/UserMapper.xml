@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//MyBatis//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pieum.user.mapper.UserMapper">
+
+    <!-- 사용자 추가 -->
+    <insert id="insertUser" parameterType="pieum.user.model.UserDTO">
+        INSERT INTO user_table (mno, mid, mpw, mname, gender, birth, phone)
+        VALUES (#{mno}, #{mid}, #{mpw}, #{mname}, #{gender}, #{birth}, #{phone})
+    </insert>
+
+    <!-- 사용자 조회 (mno 기준) -->
+    <select id="selectUserByMno" resultType="pieum.user.model.UserDTO">
+        SELECT mno, mid, mpw, mname, gender, birth, phone
+        FROM user_table
+        WHERE mno = #{mno}
+    </select>
+
+    <!-- 사용자 조회 (mid 기준) -->
+    <select id="selectUserByMid" resultType="pieum.user.model.UserDTO">
+        SELECT mno, mid, mpw, mname, gender, birth, phone
+        FROM user_table
+        WHERE mid = #{mid}
+    </select>
+
+    <!-- 사용자 수정 -->
+    <update id="updateUser" parameterType="pieum.user.model.UserDTO">
+        UPDATE user_table
+        SET mid = #{mid}, mpw = #{mpw}, mname = #{mname}, gender = #{gender}, birth = #{birth}, phone = #{phone}
+        WHERE mno = #{mno}
+    </update>
+
+    <!-- 사용자 삭제 (mno 기준) -->
+    <delete id="deleteUser" parameterType="String">
+        DELETE FROM user_table
+        WHERE mno = #{mno}
+    </delete>
+
+    <!-- 모든 사용자 조회 -->
+    <select id="selectAllUsers" resultType="pieum.user.model.UserDTO">
+        SELECT mno, mid, mpw, mname, gender, birth, phone
+        FROM user_table
+    </select>
+
+</mapper>
