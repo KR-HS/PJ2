@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pieum.user.model.LikeMapper">
+
+    <!-- 좋아요 추가 -->
+    <insert id="insertLike" parameterType="pieum.user.model.LikeDTO">
+        INSERT INTO likes (lno, user_id, target_id, created_at) 
+        VALUES (#{lno}, #{userId}, #{targetId}, NOW())
+    </insert>
+
+    <!-- 좋아요 삭제 -->
+    <delete id="deleteLike" parameterType="string">
+        DELETE FROM likes WHERE lno = #{lno}
+    </delete>
+
+</mapper>

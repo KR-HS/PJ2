@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 그룹 생성 -->
+<insert id="insertGroup"
+	parameterType="pieum.user.model.GroupDTO">
+	INSERT INTO groups (
+	gno,
+	gName,
+	gMemberCt,
+	gRegdate
+	) VALUES (
+	#{gno},
+	#{gName},
+	#{gMemberCt},
+	#{gRegdate}
+	)
+</insert>
+
+<!-- 그룹 상세 조회 -->
+<select id="selectGroupDetail" parameterType="String"
+	resultType="pieum.user.model.GroupDTO">
+	SELECT
+	gno,
+	gName,
+	gMemberCt,
+	gRegdate
+	FROM
+	groups
+	WHERE
+	gno = #{gno}
+</select>
+
+<!-- 그룹 삭제 -->
+<delete id="deleteGroup" parameterType="String">
+	DELETE FROM groups
+	WHERE
+	gno = #{gno}
+</delete>
+
+<!-- 전체 그룹 목록 조회 -->
+<select id="selectGroupList"
+	resultType="pieum.user.model.GroupDTO">
+	SELECT
+	gno,
+	gName,
+	gMemberCt,
+	gRegdate
+	FROM
+	groups
+	ORDER BY
+	gRegdate DESC
+</select>
+
+<!-- 특정 사용자가 속한 그룹 목록 조회 -->
+<select id="selectUserGroupList" parameterType="String"
+	resultType="pieum.user.model.GroupDTO">
+	SELECT
+	g.gno,
+	g.gName,
+	g.gMemberCt,
+	g.gRegdate
+	FROM
+	groups g
+	JOIN
+	group_members gm ON g.gno = gm.gno
+	WHERE
+	gm.user_id = #{userId}
+	ORDER BY
+	g.gRegdate DESC
+</select>
+
+<!-- 그룹 검색 -->
+<select id="searchGroups" parameterType="String"
+	resultType="pieum.user.model.GroupDTO">
+	SELECT
+	gno,
+	gName,
+	gMemberCt,
+	gRegdate
+	FROM
+	groups
+	WHERE
+	gName LIKE CONCAT('%', #{keyword}, '%')
+	ORDER BY
+	gRegdate DESC
+</select>
+
+<!-- 그룹 총 개수 조회 -->
+<select id="selectGroupTotalCount" resultType="int">
+	SELECT
+	COUNT(*)
+	FROM
+	groups
+</select>
