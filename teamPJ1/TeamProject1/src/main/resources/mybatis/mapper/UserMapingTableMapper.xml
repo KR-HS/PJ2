@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="pieum.user.mapper.UserMapingTableMapper">
+
+    <!-- 사용자와 그룹의 맵핑 추가 -->
+    <insert id="insertUserGroupMapping" parameterType="pieum.user.model.UserMapingTableDTO">
+        INSERT INTO user_group_mapping (mno, gno, gAccept, gOut)
+        VALUES (#{mno}, #{gno}, #{gAccept}, #{gOut})
+    </insert>
+
+    <!-- 특정 사용자가 속한 모든 그룹 조회 -->
+    <select id="getAllGroupsByUser" resultType="pieum.user.model.UserMapingTableDTO">
+        SELECT mno, gno, gAccept, gOut
+        FROM user_group_mapping
+        WHERE mno = #{mno}
+    </select>
+
+    <!-- 특정 그룹에 속한 모든 사용자 조회 -->
+    <select id="getAllUsersByGroup" resultType="pieum.user.model.UserMapingTableDTO">
+        SELECT mno, gno, gAccept, gOut
+        FROM user_group_mapping
+        WHERE gno = #{gno}
+    </select>
+
+    <!-- 사용자 그룹 맵핑 상태 변경 (승인 또는 탈퇴) -->
+    <update id="updateUserGroupStatus" parameterType="pieum.user.model.UserMapingTableDTO">
+        UPDATE user_group_mapping
+        SET gAccept = #{gAccept}, gOut = #{gOut}
+        WHERE mno = #{mno} AND gno = #{gno}
+    </update>
+
+    <!-- 사용자 그룹 맵핑 삭제 -->
+    <delete id="deleteUserGroupMapping" parameterType="map">
+        DELETE FROM user_group_mapping
+        WHERE mno = #{mno} AND gno = #{gno}
+    </delete>
+
+</mapper>

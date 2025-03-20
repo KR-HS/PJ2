@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="pieum.capsule.mapper.TagMapper">
+
+    <!-- Insert a new Tag -->
+    <insert id="insertTag" parameterType="pieum.capsule.model.TagDTO">
+        INSERT INTO tags (tno, tName)
+        VALUES (#{tno}, #{tName})
+    </insert>
+
+    <!-- Select a Tag by tno -->
+    <select id="getTagByTno" resultType="pieum.capsule.model.TagDTO">
+        SELECT tno, tName FROM tags WHERE tno = #{tno}
+    </select>
+
+    <!-- Select all Tags -->
+    <select id="getAllTags" resultType="pieum.capsule.model.TagDTO">
+        SELECT tno, tName FROM tags
+    </select>
+
+    <!-- Update a Tag -->
+    <update id="updateTag" parameterType="pieum.capsule.model.TagDTO">
+        UPDATE tags SET tName = #{tName} WHERE tno = #{tno}
+    </update>
+
+    <!-- Delete a Tag -->
+    <delete id="deleteTag" parameterType="String">
+        DELETE FROM tags WHERE tno = #{tno}
+    </delete>
+
+</mapper>

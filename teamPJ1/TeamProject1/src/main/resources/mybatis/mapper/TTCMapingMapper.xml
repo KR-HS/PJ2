@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="pieum.capsule.mapper.TTCMapingMapper">
+
+    <!-- 태그와 타임캡슐 맵핑 추가 -->
+    <insert id="insertTTCMaping" parameterType="pieum.capsule.model.TTCMapingDTO">
+        INSERT INTO ttc_mapping (tno, tcno)
+        VALUES (#{tno}, #{tcno})
+    </insert>
+
+    <!-- 특정 태그와 타임캡슐 맵핑 조회 -->
+    <select id="getTTCMaping" resultType="pieum.capsule.model.TTCMapingDTO">
+        SELECT tno, tcno
+        FROM ttc_mapping
+        WHERE tno = #{tno} AND tcno = #{tcno}
+    </select>
+
+    <!-- 특정 태그에 관련된 모든 타임캡슐 조회 -->
+    <select id="getAllTimeCapsulesByTag" resultType="pieum.capsule.model.TTCMapingDTO">
+        SELECT tno, tcno
+        FROM ttc_mapping
+        WHERE tno = #{tno}
+    </select>
+
+    <!-- 특정 타임캡슐에 관련된 모든 태그 조회 -->
+    <select id="getAllTagsByTimeCapsule" resultType="pieum.capsule.model.TTCMapingDTO">
+        SELECT tno, tcno
+        FROM ttc_mapping
+        WHERE tcno = #{tcno}
+    </select>
+
+    <!-- 태그와 타임캡슐 맵핑 삭제 -->
+    <delete id="deleteTTCMaping" parameterType="map">
+        DELETE FROM ttc_mapping
+        WHERE tno = #{tno} AND tcno = #{tcno}
+    </delete>
+
+</mapper>
