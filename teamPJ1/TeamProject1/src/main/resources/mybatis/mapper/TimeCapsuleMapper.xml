@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="pieum.capsule.mapper.TimeCapsuleMapper">
+
+    <!-- 타임캡슐 추가 (삽입) -->
+    <insert id="insertTimeCapsule" parameterType="pieum.capsule.model.TimeCapsuleDTO">
+        INSERT INTO time_capsules (tcno, tcRegdate, openDate, tcTitle, tcContent, privates, viewCt)
+        VALUES (#{tcno}, #{tcRegdate}, #{openDate}, #{tcTitle}, #{tcContent}, #{privates}, #{viewCt})
+    </insert>
+
+    <!-- 특정 타임캡슐 조회 (tcno로 조회) -->
+    <select id="getTimeCapsuleByTcno" resultType="pieum.capsule.model.TimeCapsuleDTO">
+        SELECT tcno, tcRegdate, openDate, tcTitle, tcContent, privates, viewCt
+        FROM time_capsules
+        WHERE tcno = #{tcno}
+    </select>
+
+    <!-- 모든 타임캡슐 조회 -->
+    <select id="getAllTimeCapsules" resultType="pieum.capsule.model.TimeCapsuleDTO">
+        SELECT tcno, tcRegdate, openDate, tcTitle, tcContent, privates, viewCt
+        FROM time_capsules
+    </select>
+
+    <!-- 타임캡슐 수정 (tcno를 기준으로 수정) -->
+    <update id="updateTimeCapsule" parameterType="pieum.capsule.model.TimeCapsuleDTO">
+        UPDATE time_capsules
+        SET tcRegdate = #{tcRegdate}, openDate = #{openDate}, tcTitle = #{tcTitle}, 
+            tcContent = #{tcContent}, privates = #{privates}, viewCt = #{viewCt}
+        WHERE tcno = #{tcno}
+    </update>
+
+    <!-- 타임캡슐 삭제 (tcno로 삭제) -->
+    <delete id="deleteTimeCapsule" parameterType="String">
+        DELETE FROM time_capsules
+        WHERE tcno = #{tcno}
+    </delete>
+
+</mapper>

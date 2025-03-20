@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="pieum.capsule.mapper.TagMapper">
+
+    <!-- 새로운 태그를 데이터베이스에 삽입하는 쿼리 -->
+    <insert id="insertTag" parameterType="pieum.capsule.model.TagDTO">
+        INSERT INTO tags (tno, tName)
+        VALUES (#{tno}, #{tName})
+    </insert>
+
+    <!-- 특정 tno를 이용하여 태그를 조회하는 쿼리 -->
+    <select id="getTagByTno" resultType="pieum.capsule.model.TagDTO">
+        SELECT tno, tName FROM tags WHERE tno = #{tno}
+    </select>
+
+    <!-- 모든 태그를 조회하는 쿼리 -->
+    <select id="getAllTags" resultType="pieum.capsule.model.TagDTO">
+        SELECT tno, tName FROM tags
+    </select>
+
+    <!-- 태그 정보를 업데이트하는 쿼리 -->
+    <update id="updateTag" parameterType="pieum.capsule.model.TagDTO">
+        UPDATE tags SET tName = #{tName} WHERE tno = #{tno}
+    </update>
+
+    <!-- 특정 tno를 이용하여 태그를 삭제하는 쿼리 -->
+    <delete id="deleteTag" parameterType="String">
+        DELETE FROM tags WHERE tno = #{tno}
+    </delete>
+
+</mapper>
