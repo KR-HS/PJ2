@@ -1,0 +1,74 @@
+package pieum.user.service;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import pieum.user.model.UserDTO;
+import pieum.user.model.UserMapper;
+import pieum.util.mybatis.MyBatisUtil;
+
+public class UserServiceImpl implements UserService{
+	// sqlSessionFactory 객체 생성
+	private SqlSessionFactory sqlSessionFactory = MyBatisUtil.getSqlSessionFactory();
+
+	@Override
+	public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String userType = request.getParameter("userType");
+		String name = request.getParameter("userName");
+		String birth = request.getParameter("birth");
+		String gender = request.getParameter("gender");		
+		String id = request.getParameter("userid");
+		String pw = request.getParameter("userpw");
+		String email  = request.getParameter("email");
+		String domain  = request.getParameter("domain");
+		if(domain!=null) email+="@"+domain;
+		String phone = request.getParameter("phone");
+
+		System.out.println(userType);
+
+		// 마이바티스 영역  = DAO를 대신함
+		SqlSession sql = sqlSessionFactory.openSession(true);
+		System.out.println(111);
+		UserMapper user = sql.getMapper(UserMapper.class);
+		System.out.println(111);
+		UserDTO dto = new UserDTO(userType,id,pw,name,gender,birth,phone);
+		System.out.println(111);
+		int result=0;
+		
+		
+		if(userType.equals("A")) result= user.registAdmin(dto);
+		else if(userType.equals("U")) result = user.registUser(dto);
+		
+		System.out.println(111);
+		sql.close();
+		// System.out.println(result);
+		response.sendRedirect("home.jsp");
+		
+	}
+
+	@Override
+	public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="pieum.capsule.mapper.TimeCapsuleMapper">
+
+    <select id="getNextCapsuleId" resultType="int">
+        SELECT capsule_seq.NEXTVAL FROM dual
+    </select>
+
+    <insert id="insertCapsule">
+        INSERT INTO capsule (capsule_id, title, content)
+        VALUES (#{id}, #{title}, #{content})
+    </insert>
+
+    <insert id="insertTag">
+        INSERT INTO tag (tag_id, tag_name, capsule_id)
+        VALUES (tag_seq.NEXTVAL, #{tagName}, #{capsuleId})
+    </insert>
+
+    <insert id="insertFile">
+        INSERT INTO files (file_id, file_data, file_name, capsule_id)
+        VALUES (files_seq.NEXTVAL, #{fileData}, #{fileName}, #{capsuleId})
+    </insert>
+
+</mapper>

@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class='wrap'>
-	    <jsp:include page="include/header.html" />   
+	    <jsp:include page="include/header.jsp" />   
 	    
 	    <div id="contents">
 	    	<div class='groupdetails'>	

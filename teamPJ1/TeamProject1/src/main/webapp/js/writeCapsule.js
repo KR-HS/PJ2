@@ -2,7 +2,12 @@ var fileInput = document.querySelector('#file');
 var fileUploadLabel  = document.querySelector('.fileUpload');
 var preView = document.querySelector('.preView');
 var tagList = document.querySelector('.tagList');
+var openDate  = document.getElementById('openDate');
 
+
+openDate.onclick=function(){
+	this.showPicker();
+}
 tagList.addEventListener('change',function(){
     if(event.target.tagName!='INPUT') return;
     if(event.target.checked){

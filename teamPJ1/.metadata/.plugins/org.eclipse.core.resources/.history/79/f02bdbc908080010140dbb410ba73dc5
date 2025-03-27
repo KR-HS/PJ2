@@ -1,0 +1,16 @@
+package pieum.capsule.service;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import pieum.capsule.model.FileDTO;
+
+public interface CapsuleService {
+	
+	void write(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException;
+	FileDTO getFile(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException;
+	
+}

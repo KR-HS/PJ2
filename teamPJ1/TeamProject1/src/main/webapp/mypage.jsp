@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,14 +20,13 @@
 </head>
 <body>
 <div class='wrap'>
-    <jsp:include page="include/header.html" />
+    <jsp:include page="include/header.jsp" />
     
 	<div id="contents">
 
         <div class="mypage">
             <div class="titleWrap">
-                <h6>내 정보</h6>
-                <p></p>
+                <h5>내 정보</h5>
             </div>
 
             <section class="myinfoWrap">
@@ -35,28 +35,41 @@
                         <img src="img/profile.jpg" alt="">
                     </div>
                     <div class="myinfoDetail">
-                        <p class="myname">홍길동</p>
+                        <p class="myname">${userDTO.mname}</p>
                         <span>
-                            <span class="mygender">남</span>
+                            <span class="mygender">
+                            	<c:if test="${userDTO.gender=='M'}">
+									남
+								</c:if>
+									
+								<c:if test="${userDTO.gender=='F'}">
+									여
+								</c:if>
+                            </span>
                             <span class="">|</span>
-                            <span class="my age">20세</span>
+                            <span class="myage" data-age="${userDTO.birth}">
+                            ${userDTO.birth}세
+                            </span>
                         </span>
                     </div>
                 </div>
                 <div class="myinfoBtn">
                     <div class="btnWrap">
-                        <span><a href="#" class='modifyLink'>수정하기</a></span>
+                        <span><a href="modifyInfo.user" class='modifyLink'>수정하기</a></span>
                         <span>|</span>
                         <span><a href="#" class='inquiryLink'>1:1 문의하기</a></span>
                     </div>
-                    <div class="logout">
-                        <a href="#" class="logoutLink">로그아웃</a>
-                    </div>
+                <%--     <c:choose>
+					<c:when test="${sessionScope.userDTO != null }">
+						<a href="logout.user" style="font-size:10px;">로그아웃</a>
+					</c:when>
+				</c:choose> --%>
+				<div class="reg_content"><a href="delete.user" onclick="return confirm('정말 탈퇴하시겠습니까?');" style="color:red;">회원탈퇴</a></div>
                 </div>
             </section>
             
             <div class="titleWrap">
-                <h6>내가 속한 그룹</h6>
+                <h5>내가 속한 그룹</h5>
                 <p><a href="#" class='mygroupLink'>더보기 ></a></p>
             </div>
             <section class="mygroups">
@@ -110,7 +123,7 @@
             </section>
 
             <div class="titleWrap">
-                <h6>나의 타임 캡슐</h6>
+                <h5>나의 타임 캡슐</h5>
                 <p><a href="#" class='myCapsuleLink'>더보기 ></a></p>
             </div>
             <section class="mycapsule">

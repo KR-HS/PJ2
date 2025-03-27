@@ -2,13 +2,19 @@ package pieum.capsule.model;
 
 import java.util.List;
 
+import pieum.capsule.model.InquiryDTO;
+
 public interface InquiryMapper {
 
 	 // 공지/문의 등록
-    public int insertNotice(InquiryDTO notice);
+    public int insertInquiry(InquiryDTO notice);
     
     // 공지/문의 상세 조회
     public InquiryDTO selectNoticeDetail(String nno);
+    
+    
+    // 특정 회원의 문의 목록 조회 (mno 기준)
+    public List<InquiryDTO> selectInquiriesByMno(String mno);
     
     // 공지/문의 수정
     public int updateNotice(InquiryDTO notice);
@@ -27,4 +33,10 @@ public interface InquiryMapper {
     
     // 공지/문의 개수 조회
     public int selectNoticeTotalCount(); 
+    
+    public List<InquiryDTO> selectAnnouncementList();
+
+    public InquiryDTO getAnnouncementDetail(String nno);
+
+    
 }

@@ -1,0 +1,55 @@
+var btn = document.querySelector('.writeCapsuleBtn');
+var capsuleBox = document.querySelector('.capsuleBox');
+
+btn.onclick=function(){
+	window.location.href='writeCapsule.jsp';
+}
+
+capsuleBox.onclick=function(){
+	//alert(event.target.closest('.capsule'));
+	var capsuleWrap = event.target.closest('.capsuleWrap');
+	if (!event.target.closest('.capsuleWrap')) return;
+
+ // .capsuleLock이 존재하는지 확인
+
+
+	    if (capsuleWrap.querySelector('.capsuleLock')!=null) {
+	      console.log("🔒 잠긴 캡슐 → 이동 막음");
+	      return;
+	    }
+
+	    // 열려있는 캡슐이면 이동
+	    console.log("🔓 열려있는 캡슐 → 이동");
+	    window.location.href = "viewCapsule.jsp"; // 필요시 tcno 파라미터 추가 가능
+
+
+}
+
+setInterval(function () {
+    var countdowns = document.querySelectorAll(".timeAmount");
+
+    countdowns.forEach(elem => {
+        var openDateStr = elem.getAttribute("data-opendate"); // 또는 elem.dataset.opendate
+        var openDate = new Date(openDateStr);
+        var now = new Date();
+
+        var diff = openDate - now;
+
+        if (diff <= 0) {
+            elem.innerHTML = "오픈";
+            return;
+        }
+
+        var totalSeconds = Math.floor(diff / 1000);
+        var days = Math.floor(totalSeconds / (3600 * 24));
+        var hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+        var minutes = Math.floor((totalSeconds % 3600) / 60);
+        var seconds = totalSeconds % 60;
+
+        elem.innerHTML =
+            `${days}일 ` +
+            `${String(hours).padStart(2, '0')}시간 ` +
+            `${String(minutes).padStart(2, '0')}분 ` +
+            `${String(seconds).padStart(2, '0')}초`;
+    });
+}, 1000);

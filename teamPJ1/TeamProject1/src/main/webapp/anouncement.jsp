@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,25 +15,26 @@
 </head>
 <body>
 	<div class='wrap'>
-	    <jsp:include page="include/header.html" />   
+	    <jsp:include page="include/header.jsp" />   
 	    
 	    <div id="contents">
 	    	<div class='anouncement'>
 		    	<p class='main-text'>공지사항</p>
 		    	<div class="background">
+		    	
+		    	
 			        <div class="cardbox">
-			            <ul id="notice-list">
-			                <!-- 공지사항 리스트 -->
-			                <li>
-			                	<div class="card">
-			                		<p class="title">공지사항1</p>
-			                		<span class="date">yyyy년MM월dd일</span>
-			                	</div>
-			                </li>
-			               
-			                
-			                <!-- 더 많은 공지사항 추가 -->
-			            </ul>
+			          <ul id="notice-list">
+					    <c:forEach var="announcement" items="${announcements}">
+					        <li>
+					            <div class="card" data-nno="${announcement.nno}" onclick="location.href='viewAnnouncement.inquiry?nno=${announcement.nno}'">
+					                <p class="title">${announcement.ntitle}</p>
+					                <span class="date">${announcement.nregdate}</span>
+					            </div>
+					        </li>
+					    </c:forEach>
+					</ul>
+
 			            <div id="pagination"></div>
 			        </div>
 			    </div>

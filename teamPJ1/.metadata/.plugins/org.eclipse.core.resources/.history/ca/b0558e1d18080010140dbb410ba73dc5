@@ -1,0 +1,41 @@
+var btn = document.querySelector('.writeCapsuleBtn');
+var capsuleBox = document.querySelector('.capsuleBox');
+
+
+btn.onclick=function(){
+	window.location.href='writeCapsule.jsp';
+}
+
+capsuleBox.onclick=function(){
+	//alert(event.target.closest('.capsule'));
+	
+	window.location.href='viewCapsule.jsp';
+}
+
+setInterval(function () {
+    const countdowns = document.querySelectorAll(".timeAmount");
+
+    countdowns.forEach(elem => {
+        const openDateStr = elem.getAttribute("data-opendate"); // 또는 elem.dataset.opendate
+        const openDate = new Date(openDateStr);
+        const now = new Date();
+
+        const diff = openDate - now;
+
+        if (diff <= 0) {
+            return;
+        }
+
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / (3600 * 24));
+        const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        elem.innerHTML =
+            `${days}일 ` +
+            `${String(hours).padStart(2, '0')}시간 ` +
+            `${String(minutes).padStart(2, '0')}분 ` +
+            `${String(seconds).padStart(2, '0')}초`;
+    });
+}, 1000);

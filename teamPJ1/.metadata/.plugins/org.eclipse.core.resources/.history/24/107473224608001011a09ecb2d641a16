@@ -1,0 +1,15 @@
+package pieum.capsule.service;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public interface InquiryService {
+	
+/* 작성 */	void insertInquiry(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException;
+/* 삭제 */	void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException;
+/* 수정 */	void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException;
+
+}

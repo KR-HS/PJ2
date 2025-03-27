@@ -1,0 +1,70 @@
+package pieum.user.service;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import pieum.user.model.UserDTO;
+import pieum.user.model.UsersDAO;
+
+public class UserServiceImpl implements UserService{
+
+	@Override
+	public void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String userType = request.getParameter("userType");
+		String name = request.getParameter("name");
+		String birth = request.getParameter("birth");
+		String gender = request.getParameter("gender");		
+		String id = request.getParameter("userid");
+		String pw = request.getParameter("userpw");
+		String email  = request.getParameter("email");
+		String domain  = request.getParameter("domain");
+		if(domain!=null) email+="@"+domain;
+		String phone = request.getParameter("phone");
+		
+		console.log(111);
+		
+		
+		UsersDAO dao = UsersDAO.getInstance();
+		UserDTO dto = new UserDTO(userType,id,pw,name,gender,birth,phone);
+		dao.register(dto);
+		
+//		int result = dao.idDuplicationCheck(email);
+		
+//		if(result==1) {
+//			// msg를 화면에 보냄
+//			request.setAttribute("msg","이미 존재하는 아이디입니다.");
+//			request.getRequestDispatcher("join.jsp").forward(request, response);
+//			
+//		}else {
+//			UsersDTO dto = new UsersDTO(email,name,pw,phone,gender,snsYn,null);
+//			dao.join(dto);
+//			
+//			//mvc2방식에서는 리다이렉트는 다시 컨트롤러를 태워서 이동할 때 사용
+//			response.sendRedirect("login.users");
+//		}
+		
+	}
+
+	@Override
+	public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

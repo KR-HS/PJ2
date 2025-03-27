@@ -9,6 +9,27 @@ var announcement = document.querySelector(".announcement .swiper-slide");
 var group = document.querySelector(".CapsuleReveal .swiper-slide");
 var topViews = document.querySelector(".topViews .viewBox");
 
+(function(){
+    var ageSpan = document.querySelector(".genderAndage .age");
+    if (!ageSpan) return;
+
+    var birthStr = ageSpan.getAttribute("data-age");  // 예: 2025-03-27
+    if (!birthStr) return;
+
+    var birthDate = new Date(birthStr);
+    var today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    // 출력: 생일 (yyyy-MM-dd) + 나이
+    ageSpan.textContent = `${age}세`;
+})();
+
 
 /* swiper */
 var swiper2 = new Swiper(".mySwiper2", {
@@ -42,15 +63,17 @@ var swiper3 = new Swiper(".mySwiper3", {
 
 
 /*  내정보 */
-beforeLogin.addEventListener('click', function () {
-    window.location.href = 'login.jsp';
-})
-
-myPageLink.onclick=function(){
-	event.preventDefault();
-	window.location.href="mypage.jsp";
+if(beforeLogingo!=null){
+	beforeLogingo.addEventListener('click', function () {
+	    window.location.href = 'login.user';
+	})
 }
-
+if(myPageLink!=null){
+	myPageLink.onclick=function(){
+		event.preventDefault();
+		window.location.href="mypage.user";
+	}
+}
 
 
 /* 공지사항 */
@@ -73,7 +96,7 @@ topViews.addEventListener('click', function () {
 
 /* 로그인 여부 확인*/
 
-if (username) {
+/*if (username) {
     console.log("로그인된 사용자: " + username);
     // 로그인 상태일 때
     beforeLogingo.style.display = "none";
@@ -92,3 +115,4 @@ if (username) {
     beforeLoginMemory.style.display = "flex";
     memoryList.style.display = "none";
 }
+*/

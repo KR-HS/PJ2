@@ -1,2 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="pieum.util.JdbcUtil"/>
+    <fullyQualifiedTypeName name="pieum.user.service.UserService"/>
+    <fullyQualifiedTypeName name="pieum.user.service.UserServiceImpl"/>
+    <fullyQualifiedTypeName name="pieum.user.model.UserMapper"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="pieum.capsule.model.AttachmentDTO"/>
+    <fullyQualifiedTypeName name="pieum.capsule.model.CommentDTO"/>
+    <fullyQualifiedTypeName name="pieum.capsule.model.InquiryDTO"/>
+    <fullyQualifiedTypeName name="pieum.capsule.model.TTCMapingDTO"/>
+    <fullyQualifiedTypeName name="pieum.user.model.GroupDTO"/>
+    <fullyQualifiedTypeName name="pieum.user.model.LikeDTO"/>
+    <fullyQualifiedTypeName name="pieum.user.mapper.UserMapper"/>
+    <fullyQualifiedTypeName name="pieum.user.model.UserMapingTableDTO"/>
+    <fullyQualifiedTypeName name="pieum.user.model.UserDTO"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="javax.servlet.ServletException"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="pieum.capsule.service.CapsuleServiceImpl"/>
+    <fullyQualifiedTypeName name="pieum.capsule.service.CapsuleService"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.Part"/>
+    <fullyQualifiedTypeName name="java.nio.file.Paths"/>
+    <fullyQualifiedTypeName name="oracle.sql.BLOB"/>
+    <fullyQualifiedTypeName name="java.sql.Blob"/>
+    <fullyQualifiedTypeName name="pieum.capsule.model.TimeCapsuleMapper"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.MultipartConfig"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="pieum.capsule.model.TimeCapsuleDTO"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="pieum.capsule.model.TagDTO"/>
+    <fullyQualifiedTypeName name="pieum.util.mybatis.MyBatisUtil"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+    <fullyQualifiedTypeName name="pieum.capsule.mapper.TimeCapsuleMapper"/>
+    <fullyQualifiedTypeName name="pieum.capsule.model.FileDTO"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+</qualifiedTypeNameHistroy>

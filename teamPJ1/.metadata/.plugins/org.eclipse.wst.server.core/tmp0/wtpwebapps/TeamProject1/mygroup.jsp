@@ -21,7 +21,7 @@
 <body>
     
 <div class='wrap'>
-    <jsp:include page="include/header.html" />   
+    <jsp:include page="include/header.jsp" />   
      
      
 

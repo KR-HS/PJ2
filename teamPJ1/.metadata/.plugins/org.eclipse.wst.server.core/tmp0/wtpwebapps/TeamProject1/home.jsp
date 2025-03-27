@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,40 +17,64 @@
 </head>
 <body>
 	<div class='wrap'>
-		<jsp:include page="include/header.html" />
+		<jsp:include page="include/header.jsp" />
 
 		<div id="contents">
 			<div class="homepage">
 				<section id="home">
 					<h5>내 정보 🚀</h5>
-					<div class="login flex">
-						<figure>
-							<img src="img2/ex.jpg" alt="home_login_img">
-						</figure>
-						<div class="homeLoginInfo">
-							<p class="name">송택호</p>
-							<div class="genderAndage">
-								<span>남</span> <span>10세</span>
+					
+				<c:choose>
+					<c:when test="${sessionScope.userDTO == null }">
+						<!-- 로그인 전 -->
+						<div class="beforeLogin">
+							<h3>로그인 하러가기</h3>
+							<p>로그인하고 피움 서비스를 자유롭게 이용해보세요.</p>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="login flex">
+							<figure>
+								<img src="img2/ex.jpg" alt="home_login_img">
+							</figure>
+							<div class="homeLoginInfo">
+								<p class="name">${userDTO.mname}</p>
+								<div class="genderAndage">
+									<span>
+									<c:if test="${userDTO.gender=='M'}">
+										남
+									</c:if>
+									
+									<c:if test="${userDTO.gender=='F'}">
+										여
+									</c:if>
+									</span> 
+									
+									<span class="age" data-age="${userDTO.birth}">
+									
+									</span>
+								</div>
+								<div class="myGroup">
+									<span style="padding-right: 20px;">내 그룹
+										<span class="myGroupNum">5</span>
+									</span>
+									<span>문의 
+										<span class="myGroupNum">12</span>
+									</span>
+								</div>
 							</div>
-							<div class="myGroup">
-								<span style="padding-right: 20px;">내 그룹 <span
-									class="myGroupNum">5</span></span> <span>문의 <span
-									class="myGroupNum">12</span></span>
+							<div class="myPageLink">
+								<div class='myPagewrap'>
+									<p><a href='mypage.user'>마이페이지</a></p>
+									<span><img src="img2/next.png" alt=""></span>
+								</div>
 							</div>
 						</div>
-						<div class="myPageLink">
-							<div class='myPagewrap'>
-								<p>마이페이지</p>
-								<span><img src="img2/next.png" alt=""></span>
-							</div>
-						</div>
-					</div>
+					</c:otherwise>		
+				</c:choose>
+
 	
-					<!-- 로그인 전 -->
-					<div class="beforeLogin">
-						<h3>로그인 하러가기</h3>
-						<p>로그인하고 피움 서비스를 자유롭게 이용해보세요.</p>
-					</div>
+
 				</section>
 	
 	
@@ -60,19 +86,19 @@
 						<div class="swiper-wrapper flex">
 							<div class="swiper-slide">
 								<h2>[안내] 네이버웍스 경영지원 성과평가 서비스 베타 오픈</h2>
-								<p>yyyy년 MM월 dd일</p>
+								<p>2025년 03월 24일</p>
 							</div>
 							<div class="swiper-slide">
 								<h2>[사전 안내 2차] 상반기 Windows WORKS Drive탐색기 신규 업데이트 주요 변경 사항</h2>
-								<p>yyyy년 MM월 dd일</p>
+								<p>2025년 03월 24일</p>
 							</div>
 							<div class="swiper-slide">
 								<h2>[교육] 네이버웍스 클로바노트 사용자 무료 교육 안내ㅣ25년 2월 13일(목)</h2>
-								<p>yyyy년 MM월 dd일</p>
+								<p>2025년 03월 20일</p>
 							</div>
 							<div class="swiper-slide">
 								<h2>네이버웍스 경영지원 정기 업데이트 소식</h2>
-								<p>yyyy년 MM월 dd일</p>
+								<p>2025년 03월 21일</p>
 							</div>
 						</div>
 					</div>
@@ -241,23 +267,30 @@
 	
 				<section class="memory">
 					<h5>추억을 함께한 사람 💫</h5>
-					<div class="memoryList">
-						<ul>
-							<li><img src="img2/ex.jpg" alt="memoryImages">
-								<p>김대영</p></li>
-							<li><img src="img2/ex.jpg" alt="memoryImages">
-								<p>김현수</p></li>
-							<li><img src="img2/ex.jpg" alt="memoryImages">
-								<p>김나연</p></li>
-							<li><img src="img2/ex.jpg" alt="memoryImages">
-								<p>송택호</p></li>
-						</ul>
-					</div>
-	
-					<div class="beforeLogin-memory">
-						<img src="img/time.gif" alt="time">
-						<p>로그인 하시고 많은 사람들과 추억을 공유하세요!</p>
-					</div>
+					<c:if test="${sessionScope.userDTO != null}">
+						<div class="memoryList">
+							<ul>
+								<li><img src="img2/ex.jpg" alt="memoryImages">
+									<p>김대영</p>
+								</li>
+								<li><img src="img2/ex.jpg" alt="memoryImages">
+									<p>김현수</p>
+								</li>
+								<li><img src="img2/ex.jpg" alt="memoryImages">
+									<p>김나연</p>
+								</li>
+								<li><img src="img2/ex.jpg" alt="memoryImages">
+									<p>송택호</p>
+								</li>
+							</ul>
+						</div>
+					</c:if>
+					<c:if test="${sessionScope.userDTO == null}">
+						<div class="beforeLogin-memory">
+							<img src="img/time.gif" alt="time">
+							<p>많은 사람들과 추억을 공유하세요!</p>
+						</div>
+					</c:if>
 				</section>
 	
 				<section class="topViews">

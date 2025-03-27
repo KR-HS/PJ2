@@ -33,7 +33,7 @@
     justify-content: flex-start;
     gap: 25px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-    display: none;
+    display: flex;
 }
 
 .homepage #home .login figure img {
@@ -104,8 +104,11 @@
 }
 .homepage #home .myPageLink p {
     margin: 0;
-    color: var(--text-color2);
 
+}
+
+.homepage #home .myPageLink p a{
+	    color: var(--text-color2);
 }
 
 .homepage #home .myPageLink span img {
@@ -283,7 +286,7 @@
 
 }
 .homepage .memory .memoryList{
-    display: none;
+    /* display: none; */
 }
 .homepage .memory ul {
     display: flex;
@@ -351,7 +354,7 @@
     height: 100px;
     overflow: hidden;
     border-radius: 12px;
-    background-image: url(/img/backgorund.jpg);
+    background-image: url(img/backgorund.jpg);
     background-size: cover;
     background-position: center;
     margin-right: 15px;

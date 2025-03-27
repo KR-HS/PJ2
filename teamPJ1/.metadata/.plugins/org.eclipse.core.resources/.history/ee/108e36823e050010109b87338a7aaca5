@@ -1,5 +1,0 @@
-package pieum.capsule.model;
-
-public interface NoticeMapper {
-
-}

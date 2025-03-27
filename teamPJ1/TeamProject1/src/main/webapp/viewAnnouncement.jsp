@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 상세</title>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class='wrap'>
-		<jsp:include page="include/header.html" />
+		<jsp:include page="include/header.jsp" />
 
 		<div id="contents">
 			<div class="viewAnnounce">
@@ -22,17 +22,20 @@
 	
 				<div class="write">
 					<form action="#">
-						<p class="subtitle">제목</p>
+						<p class="subtitle">${announcement.ntitle}</p>
 						<div class="line">
-							<textarea name="content" id="content" maxlength="1000"></textarea>
+							
+						</div>
+
+						
+						<div class="line">
+							<textarea name="content" id="content" maxlength="1000" readonly>${announcement.ncontent}</textarea>
 						</div>
 					</form>
-	
-	
-	
+
 					<div class="line submit">
-						<button type="button" class="homeBtn"> 홈으로</button>
-						<button type="button" class="submitBtn">목록</button>
+						<button type="button" class="homeBtn" onclick="location.href='home.jsp'">홈으로</button>
+						<button type="button" class="submitBtn" onclick="location.href='announcement.inquiry'">목록</button>
 					</div>
 				</div>
 			</div>

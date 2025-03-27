@@ -2,7 +2,6 @@ var menubar = document.querySelector('.menubar');
 var menu = document.querySelector('.menu');
 var closing = document.querySelector('.closed');
 var html = document.querySelector('html');
-
 var logo = document.querySelector('.logo');
 var mygroupIcon = document.querySelector('.menuIcon.mygroupIcon');
 var homeIcon = document.querySelector('.menuIcon.homeIcon');
@@ -15,40 +14,39 @@ var alterInfo = document.querySelector('.alterInfo');
 // 로고 홈으로 이동
 logo.onclick=function(){
 	event.preventDefault();
-	window.location.href="home.jsp";
+	window.location.href="home.user";
 }
 
-
-// 프로필 편집
-alterInfo.onclick=function(){
-	event.preventDefault();
-	window.location.href='modifyInfo.jsp';
+if(alterInfo!=null){
+	// 프로필 편집
+	alterInfo.onclick=function(){
+		event.preventDefault();
+		window.location.href='modifyInfo.user';
+	}
 }
-
-
 // 메뉴버튼 링크
 mygroupIcon.onclick=function(){
 	window.location.href='mygroup.jsp';
 }
 
 homeIcon.onclick=function(){
-	window.location.href='home.jsp';
+	window.location.href='home.user';
 }
 
 mypageIcon.onclick=function(){
-	window.location.href='mypage.jsp';
+	window.location.href='mypage.user';
 }
 
 consultIcon.onclick=function(){
-	window.location.href='inquiry.jsp';
+	window.location.href='write.inquiry';
 }
 
 myConsultIcon.onclick=function(){
-	window.location.href='myInquiry.jsp';
+	window.location.href='myInquiry.inquiry';
 }
 
 anounceIcon.onclick=function(){
-	window.location.href='anouncement.jsp';
+	window.location.href='announcement.inquiry';
 }
 
 

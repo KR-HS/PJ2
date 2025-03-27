@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +14,15 @@
 </head>
 <body>
 	<div class='watchWrap'>
-		<jsp:include page="include/header.html" />
-
-		<div id="watchContents">
+		<jsp:include page="include/header.jsp" />
+		
+		
+		<c:set var="bgStyle" value="background-image: url('img/backgorund.jpg')" />
+		<c:if test="${not empty capsuleDTO.files}">
+			<c:set var="bgStyle" value="background-image: url('image?fno=${capsuleDTO.files[0].fno}');" />
+		</c:if>
+		
+		<div id="watchContents" style="${bgStyle}">
 			<!-- <img src="img/backgorund.jpg" alt=""> -->
 			<div class="heart">
 				<span><img src="img/pink_icon_heart.png" alt="pinkHeart"></span>
@@ -24,49 +30,71 @@
 			</div>
 
 			<div class="title">
-				<p>title</p>
+ 				<p>
+ 				<c:if test="${empty capsuleDTO }">
+					title
+				</c:if>
+				<c:if test="${not empty capsuleDTO }">
+					${capsuleDTO.tcTitle }
+				</c:if>
+				</p>
 			</div>
 			<div class="titleSlide">
 				<div class="swiper mySwiper4">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<img src="img/backgorund.jpg" alt="swiperImages">
-						</div>
-						<div class="swiper-slide">
-							<img src="img/backgorund.jpg" alt="swiperImages">
-						</div>
-						<div class="swiper-slide">
-							<img src="img/backgorund.jpg" alt="swiperImages">
-						</div>
-						<div class="swiper-slide">
-							<img src="img/backgorund.jpg" alt="swiperImages">
-						</div>
-						<div class="swiper-slide">
-							<img src="img/backgorund.jpg" alt="swiperImages">
-						</div>
-						<div class="swiper-slide">
-							<img src="img/backgorund.jpg" alt="swiperImages">
-						</div>
-						<div class="swiper-slide">
-							<img src="img/backgorund.jpg" alt="swiperImages">
-						</div>
-						<div class="swiper-slide">
-							<img src="img/backgorund.jpg" alt="swiperImages">
-						</div>
-						<div class="swiper-slide">
-							<img src="img/backgorund.jpg" alt="swiperImages">
-						</div>
+						<c:if test="${!empty capsuleDTO.files }">
+							<c:forEach var="image" items="${capsuleDTO.files}">
+								<div class="swiper-slide">
+									<img src="image?fno=${image.fno}" alt="swiperImages">
+								</div>
+							</c:forEach>
+						</c:if>
+						<c:if test="${empty capsuleDTO.files }">
+							<div class="swiper-slide">
+								<img src="img/backgorund.jpg" alt="swiperImages">
+							</div>
+							<div class="swiper-slide">
+								<img src="img/backgorund.jpg" alt="swiperImages">
+							</div>
+							<div class="swiper-slide">
+								<img src="img/backgorund.jpg" alt="swiperImages">
+							</div>
+							<div class="swiper-slide">
+								<img src="img/backgorund.jpg" alt="swiperImages">
+							</div>
+							<div class="swiper-slide">
+								<img src="img/backgorund.jpg" alt="swiperImages">
+							</div>
+							<div class="swiper-slide">
+								<img src="img/backgorund.jpg" alt="swiperImages">
+							</div>
+							<div class="swiper-slide">
+								<img src="img/backgorund.jpg" alt="swiperImages">
+							</div>
+							<div class="swiper-slide">
+								<img src="img/backgorund.jpg" alt="swiperImages">
+							</div>
+						</c:if>
 					</div>
 					<div class="swiper-pagination"></div>
 				</div>
 			</div>
 			<div class="title_bottom_content">
-				<p>나는 이번 주제에 대해 곰곰이 생각해 보았다. 요즘 나의 최대 걱정. 솔직하게 써야 할지 고민했다. 이 글은
+				<p>
+				<c:if test="${empty capsuleDTO }">
+					나는 이번 주제에 대해 곰곰이 생각해 보았다. 요즘 나의 최대 걱정. 솔직하게 써야 할지 고민했다. 이 글은
 					많은 사람들이 볼 수 있는 글이다. 그러니 주제는 바이러스에 관한 걱정 등 대중적인 걱정일 법한 것으로 선택하려 했다.
 					하지만 나의 이야기를 담지 않은 글은 진정한 나의 글이 아니라는 생각이 들어, 나의 진실된 나는 이번 주제에 대해 곰곰이
 					생각해 보았다. 요즘 나의 최대 걱정. 솔직하게 써야 할지 고민했다. 이 글은 많은 사람들이 볼 수 있는 글이다. 그러니
 					주제는 바이러스에 관한 걱정 등 대중적인 걱정일 법한 것으로 선택하려 했다. 하지만 나의 이야기를 담지 않은 글은 진정한
-					나의 글이 아니라는 생각이 들어, 나의 진실된</p>
+					나의 글이 아니라는 생각이 들어, 나의 진실된
+				</c:if>
+				<c:if test="${not empty capsuleDTO }">
+					${capsuleDTO.tcContent }
+				</c:if>
+				
+					
+					</p>
 				<span>더보기 ...</span>
 			</div>
 			<div class="chat">

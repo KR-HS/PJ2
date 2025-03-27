@@ -41,8 +41,19 @@
     width: 0px;
     background: transparent; /* 스크롤바가 표시되지 않게 투명하게 처리 */
 }
+/* 오픈 날짜 */
+.write #openDate{
+	width:50%;
+	padding:10px;
+	border:none;
+	border-radius:15px;
+	box-shadow:1px 1px 5px rgba(0,0,0,0.3);
+}
 
-
+.write #openDate:focus{
+	outline: none;
+	border:none;
+}
 /* 태그 */
 .tagList{
     display:flex;
